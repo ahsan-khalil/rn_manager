@@ -1,7 +1,7 @@
 import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth'
 import { initializeApp } from "firebase/app";
 
-import { EMAIL_CHANGED, PASSWORD_CHANGED, LOGIN_USER_SUCCESS, LOGIN_USER_FAIL } from "./type"
+import { EMAIL_CHANGED, PASSWORD_CHANGED, LOGIN_USER_SUCCESS, LOGIN_USER_FAIL, LOGIN_USER } from "./type"
 export const emailChanged = (email) => {
     return {
         type: EMAIL_CHANGED,
@@ -30,6 +30,7 @@ export const loginUser = (email, password) => {
         const app = initializeApp(firebaseConfig);
     return (dispatch) => {
         const auth = getAuth(app);
+        dispatch({ type: LOGIN_USER })
         signInWithEmailAndPassword(auth ,email, password).then((user) => {
             loginUserSuccess(dispatch, user.user);
           })

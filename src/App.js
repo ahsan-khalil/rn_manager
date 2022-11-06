@@ -4,6 +4,7 @@ import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import reducers from './reducers';
 import { initializeApp } from "firebase/app";
+import LoginForm from './components/LoginForm';
 
 class App extends Component {
     componentDidMount() {
@@ -23,9 +24,7 @@ class App extends Component {
         return(
             <Provider store={createStore(reducers)}>
                 <SafeAreaView>
-                    <Text>
-                        Hello!
-                    </Text>
+                    <LoginForm />
                 </SafeAreaView>
             </Provider>
         );
